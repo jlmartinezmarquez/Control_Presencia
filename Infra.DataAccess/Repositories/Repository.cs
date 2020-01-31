@@ -11,6 +11,7 @@ namespace Infra.DataAccess.Repositories
         private readonly string connectionString;
         public Repository()
         {
+            // JLM - LA connection string deberia ir en el archivo de configuracion appsettings.json
             //connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["conMDB"].ToString();
             connectionString = @"Server=RYZEN-7\SQLEXPRESS;Database=MDB;Integrated Security=SSPI;";
 
