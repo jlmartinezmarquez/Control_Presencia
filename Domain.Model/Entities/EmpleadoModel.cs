@@ -28,6 +28,8 @@ namespace Domain.Model.Entities
         {
             empleadoRepository = new EmpleadoRepository();
         }
+        
+        // JLM - No metas codigo de negocio en una entity, ya que rompe el principio de Single Responsibility. Una clase para las propiedades, otra para los métodos con lógica
         public string SaveChanges()
         {
             string message=null;
@@ -39,6 +41,12 @@ namespace Domain.Model.Entities
                 empleadoDataModel.Apellido = Apellido;
                 empleadoDataModel.Codigo = Codigo;
 
+                // JLM - ESta instruccion solo se deberia usar en los casos puntuales en los que reemplazarla por otra cosa mejor fuera muy costoso.
+                // JLM - Si mañana necesitas añadir EntityState.Updated habria que modificar la clase, lo que rompe el principio Open/Closed
+                // JLM - La manera de no usar switch case y respetar la O de SOLID es crearte por cada case una clase con un metodo que implemente la logica que tienes en el case
+                // JLM - Basicamente, implementar el Strategy Pattern: ﻿https://dotnetcodr.com/2015/09/30/design-patterns-and-practices-in-net-the-strategy-pattern/
+                // JLM - Ej: IEntityStateCrud con un método llamado Operate. Es implementado por EntityStateAdd, EntityStateModify, EntityStateDelete
+                // JLM - En vez de usar Reflection, que ralentiza el codigo, le puedes inyectar al constructor un Dictionary con las clases y el interfaz que implementa
                 switch (State)
                 {
                     case EntityState.Added:
