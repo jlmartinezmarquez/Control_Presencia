@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<!-- JLM - WindowsForms no se usa en casi ningun sitio. Te recomiendo que en vez de este proyecto te crees uno de API y lo pruebes instalando Swagger y/o lanzandole HttpRequests con Postman -->
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
